@@ -9,6 +9,11 @@ import { applyFontSize } from "../properties/fonts.js";
 import { applyAlignment } from "../properties/alignment.js";
 import { applyWidthHeight } from "../properties/sizing.js";
 import { applyOffset, applyPositionType } from "../properties/position.js";
+import { applyShadow } from "../properties/shadow.js";
+import { applyCursor } from "../properties/cursor.js";
+import { applyOpacity } from "../properties/opacity.js";
+import { applyZIndex } from "../properties/zindex.js";
+import { applyDisplay } from "../properties/display.js";
 
 const getStyleType = (splittedClassName) => {
   if (!splittedClassName || splittedClassName.length < 2) {
@@ -107,6 +112,24 @@ const applyStyles = (element, splittedClassName) => {
     case "bottom":
     case "left":
       applyOffset(element, splittedClassName, styleType);
+      break;
+    case "shadow":
+      applyShadow(element, splittedClassName);
+      break;
+    case "cursor":
+      applyCursor(element, splittedClassName);
+      break;
+    case "opacity":
+      applyOpacity(element, splittedClassName);
+      break;
+    case "z":
+      applyZIndex(element, splittedClassName);
+      break;
+    case "block":
+    case "inline-block":
+    case "hidden":
+    case "display":
+      applyDisplay(element, splittedClassName);
       break;
     default:
       console.warn(`This style type is not supported yet: ${styleType}`);
