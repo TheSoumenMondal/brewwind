@@ -3,6 +3,8 @@ import {
   borderRadiusValues,
   borderWidthValues,
   roundedDirectionValues,
+  borderStyleValues,
+  borderStyleDirectionValues,
 } from "../constants/border.js";
 import colorsPalette from "../constants/colors.js";
 
@@ -79,4 +81,27 @@ export const applyBorderColor = (element, splittedClassName) => {
   }
 
   element.style.borderColor = colorValue;
+};
+
+export const applyBorderStyle = (element, splittedClassName) => {
+  if (splittedClassName.length < 3) {
+    return;
+  }
+
+  const styleKey = splittedClassName[1];
+  const styleValue = splittedClassName[2];
+  const directionProperty = borderStyleDirectionValues[styleKey];
+  const borderStyleValue = borderStyleValues[styleValue];
+
+  if (!directionProperty || !borderStyleValue) {
+    return;
+  }
+
+  if (Array.isArray(directionProperty)) {
+    directionProperty.forEach((property) => {
+      element.style[property] = borderStyleValue;
+    });
+  } else {
+    element.style[directionProperty] = borderStyleValue;
+  }
 };

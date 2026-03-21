@@ -41,3 +41,25 @@ export const borderRadiusValues = {
   "3xl": "1.5rem",
   full: "9999px",
 };
+
+export const borderStyleValues = {
+  solid: "solid",
+  dashed: "dashed",
+  dotted: "dotted",
+  double: "double",
+  groove: "groove",
+  ridge: "ridge",
+  inset: "inset",
+  outset: "outset",
+  none: "none",
+};
+
+export const borderStyleDirectionValues = {
+  "border-style": "borderStyle",
+  "border-t-style": "borderTopStyle",
+  "border-r-style": "borderRightStyle",
+  "border-b-style": "borderBottomStyle",
+  "border-l-style": "borderLeftStyle",
+  "border-x-style": ["borderLeftStyle", "borderRightStyle"],
+  "border-y-style": ["borderTopStyle", "borderBottomStyle"],
+};

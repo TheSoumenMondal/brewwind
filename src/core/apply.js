@@ -4,6 +4,7 @@ import {
   applyBorder,
   applyBorderColor,
   applyBorderRadius,
+  applyBorderStyle,
 } from "../properties/border.js";
 import { applyFontSize } from "../properties/fonts.js";
 import { applyAlignment } from "../properties/alignment.js";
@@ -14,6 +15,7 @@ import { applyCursor } from "../properties/cursor.js";
 import { applyOpacity } from "../properties/opacity.js";
 import { applyZIndex } from "../properties/zindex.js";
 import { applyDisplay } from "../properties/display.js";
+import { applyOverflow } from "../properties/overflow.js";
 
 const getStyleType = (splittedClassName) => {
   if (!splittedClassName || splittedClassName.length < 2) {
@@ -82,6 +84,15 @@ const applyStyles = (element, splittedClassName) => {
     case "border":
       applyBorderColor(element, splittedClassName);
       break;
+    case "border-style":
+    case "border-t-style":
+    case "border-r-style":
+    case "border-b-style":
+    case "border-l-style":
+    case "border-x-style":
+    case "border-y-style":
+      applyBorderStyle(element, splittedClassName);
+      break;
     case "rounded":
     case "rounded-t":
     case "rounded-r":
@@ -130,6 +141,11 @@ const applyStyles = (element, splittedClassName) => {
     case "hidden":
     case "display":
       applyDisplay(element, splittedClassName);
+      break;
+    case "overflow":
+    case "overflow-x":
+    case "overflow-y":
+      applyOverflow(element, splittedClassName, styleType);
       break;
     default:
       console.warn(`This style type is not supported yet: ${styleType}`);
