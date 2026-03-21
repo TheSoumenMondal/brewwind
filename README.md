@@ -1,6 +1,8 @@
 # BrewWind
 
-<img width="1501" height="500" alt="Image" src="https://github.com/user-attachments/assets/936c9e11-7c7b-4565-b362-b7d3a49e5b7c" />
+<p align="center">
+  <img src="https://raw.githubusercontent.com/TheSoumenMondal/brewwind/main/assets/demo.png" width="800"/>
+</p>
 
 A lightweight utility-class engine for browser projects.
 
