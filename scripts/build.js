@@ -1,4 +1,5 @@
 import { build, context } from "esbuild";
+import { copyFile, mkdir } from "fs/promises";
 
 const watchMode = process.argv.includes("--watch");
 
@@ -48,6 +49,15 @@ const runBuild = async () => {
   );
 
   console.log("[BrewWind] Build complete: dist/index.js and dist/index.cjs");
+
+  try {
+    await mkdir("docs/dist", { recursive: true });
+    await copyFile("dist/index.js", "docs/dist/index.js");
+    await copyFile("dist/index.js.map", "docs/dist/index.js.map");
+    console.log("[BrewWind] Copied dist/index.js to docs/dist/");
+  } catch (err) {
+    console.error("[BrewWind] Failed to copy dist to docs:", err);
+  }
 };
 
 runBuild().catch((error) => {
